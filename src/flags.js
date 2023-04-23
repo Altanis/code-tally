@@ -32,6 +32,8 @@ function parse(flags) {
         }
     }
         
+    config.extensions.map((ext, i) => config.extensions[i] = ext.trim());
+    config.exclusions.map((ext, i) => config.exclusions[i] = ext.trim());
     return config;
 };
 

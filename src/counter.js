@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const { info, warn, error } = require("./config");
 
 module.exports = class Counter {
@@ -37,11 +38,13 @@ module.exports = class Counter {
         }
     }
 
-    checkExclusions(path) {
+    checkExclusions(p) {
+        const absolutePath = path.resolve(p);
         for (const exclusion of this.config.exclusions) {
-            if (path.includes(exclusion)) return true;
+            const exclusionPath = path.resolve(process.cwd(), exclusion);
+            if (absolutePath.startsWith(exclusionPath)) return true;
         }
-        
+
         return false;
     }
 }
