@@ -1,13 +1,13 @@
 {
   "name": "code-tally",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A command-line utility which counts the lines of code in your directory!",
   "main": "src/cli.js",
   "scripts": {
-    "start": "node src/cli"
+    "start": "node src/cli.js"
   },
   "bin": {
-    "code-tally": "src/cli.js"
+    "code-tally": "./src/cli.js"
   },
   "keywords": [
     "cli",
