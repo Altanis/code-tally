@@ -2,7 +2,12 @@ const fs = require("fs");
 const { info, warn, error } = require("./config");
 
 module.exports = class Counter {
-    config = {};
+    config = {
+        directory: "",
+        extensions: [],
+        exclusions: [],
+        breakdown: false
+    };
     loc = {};
 
     constructor(config) {
@@ -16,6 +21,8 @@ module.exports = class Counter {
             const files = fs.readdirSync(directory);
             for (const file of files) {
                 const path = `${directory}/${file}`;
+                
+                if (this.checkExclusions(path)) continue;
 
                 if (fs.lstatSync(path).isDirectory()) this.readFolder(path);
                 else {
@@ -28,5 +35,13 @@ module.exports = class Counter {
             error(`Could not read directory ${directory}: ${err}`);
             process.exit();
         }
+    }
+
+    checkExclusions(path) {
+        for (const exclusion of this.config.exclusions) {
+            if (path.includes(exclusion)) return true;
+        }
+        
+        return false;
     }
 }

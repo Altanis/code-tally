@@ -3,6 +3,7 @@ function parse(flags) {
     const config = {
         directory: "",
         extensions: [],
+        exclusions: [],
         breakdown: false
     };
 
@@ -22,6 +23,11 @@ function parse(flags) {
             }
             case "breakdown": {
                 config.breakdown = true;
+                break;
+            }
+            case "exclude": {
+                for (const ext of info.split(",")) config.exclusions.push(ext);
+                break;
             }
         }
     }
