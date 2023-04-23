@@ -17,11 +17,11 @@ module.exports = class Counter {
             for (const file of files) {
                 const path = `${directory}/${file}`;
 
-                if (fs.lstatSync(file).isDirectory()) this.readFolder(path);
+                if (fs.lstatSync(path).isDirectory()) this.readFolder(path);
                 else {
                     if (!this.config.extensions.includes(path.split(".")[1]) && this.config.extensions.length) continue;
                     const contents = fs.readFileSync(path, "utf-8");
-                    this.loc[path.replaceAll(process.cwd(), "")] = contents.split("\n").length;
+                    this.loc[path.replaceAll(this.config.directory || process.cwd(), "")] = contents.split("\n").length;
                 }
             }
         } catch (err) {

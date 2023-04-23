@@ -1,19 +1,26 @@
 {
   "name": "code-tally",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A command-line utility which counts the lines of code in your directory!",
   "main": "cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "code-tally": "./cli.js"
-  },
+  "bin": "cli.js",
   "keywords": [
     "cli",
     "lines-of-code",
     "loc"
   ],
   "author": "Altanis",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altanis/lines-of-code.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Altanis/lines-of-code/issues"
+  },
+  "homepage": "https://github.com/Altanis/lines-of-code#readme",
+  "packageManager": "yarn@3.5.0"
 }
